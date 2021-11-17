@@ -1,15 +1,15 @@
 # See LICENSE.txt for license details.
 
 CXX_FLAGS += -std=c++11 -O3 -Wall
-PAR_FLAG = -fopenmp
+PAR_FLAG = -static
 
 ifneq (,$(findstring icpc,$(CXX)))
-	PAR_FLAG = -openmp
+	PAR_FLAG = -static
 endif
 
 ifneq (,$(findstring sunCC,$(CXX)))
 	CXX_FLAGS = -std=c++11 -xO3 -m64 -xtarget=native
-	PAR_FLAG = -xopenmp
+	PAR_FLAG = -static
 endif
 
 ifneq ($(SERIAL), 1)
